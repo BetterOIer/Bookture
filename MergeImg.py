@@ -16,7 +16,7 @@ import os
 from PIL import Image, ImageDraw
 from math import ceil
 
-def mergeImgs(inDir, outDir, format, pgRow, pgCol=-1, drawFlag=True, imgCnt=1):
+def mergeImgs(inDir, outDir, format, pgRow, pgCol=-1, drawFlag=True, imgCnt=1, bgColor=(255, 255, 255)):
     
     """
     This is the merge function, 
@@ -46,13 +46,13 @@ def mergeImgs(inDir, outDir, format, pgRow, pgCol=-1, drawFlag=True, imgCnt=1):
     while pgCnt<n:  # This layer processes each merged image
         # Boundary detection
         if pgCnt+perImg<=n:
-            newImg=Image.new("RGB",(maxX*pgRow,maxY*pgCol),'white')
+            newImg=Image.new("RGB",(maxX*pgRow,maxY*pgCol),bgColor)
             thsiImgCnt=perImg;xLimit=pgRow;yLimit=pgCol
         elif pgCnt+pgRow<=n:
-            newImg=Image.new("RGB",(maxX*pgRow,maxY*ceil((n-pgCnt)/pgRow)),'white')
+            newImg=Image.new("RGB",(maxX*pgRow,maxY*ceil((n-pgCnt)/pgRow)),bgColor)
             thsiImgCnt=n-pgCnt;xLimit=pgRow;yLimit=ceil((n-pgCnt)/pgRow)
         else:
-            newImg=Image.new("RGB",(maxX*(n-pgCnt),maxY),'white')
+            newImg=Image.new("RGB",(maxX*(n-pgCnt),maxY),bgColor)
             thsiImgCnt=n-pgCnt;xLimit=n-pgCnt;yLimit=1
         
         # Paste each image
@@ -88,5 +88,5 @@ def mergeImgs(inDir, outDir, format, pgRow, pgCol=-1, drawFlag=True, imgCnt=1):
 if __name__ == "__main__":
     inDir = "input_dir"
     outDir = "output_dir"
-    mergeImgs(inDir, outDir,"jpg",1,1,True,1)
-    #输入，输出，格式，长，宽，是否划线，编号开始下标
+    mergeImgs(inDir, outDir,"jpg",1,1,True,1,(255,255,255))
+    #输入，输出，格式，长，宽，是否划线，编号开始下标，背景颜色（选填）

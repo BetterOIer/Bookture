@@ -16,6 +16,6 @@ else:
 
 confirm = input(f"[Inform] Run Program 2?")
 if confirm == "":
-    mergeImgs(tempDir, outDir, imgFormat, 5, 8, True, 1)
+    mergeImgs(tempDir, outDir, imgFormat, 5, 8, True, 1, (250, 249, 222))
 else:
     print(f"[Error] Program 2 terminated by user!")
