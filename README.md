@@ -49,4 +49,8 @@ covertPDFtoImg(inDir, outDir, "PDF_name","jpg",2,1,100)
 mergeImgs(inDir, outDir,"jpg",5,8,True,1,(255,255,255))
 #输入，输出，格式，长，宽，是否划线，编号开始下标，背景颜色（选填）
 ```
+
+>一些推荐的背景色
+>![Color](image/colors.jpeg)
+
 **注意**，背景颜色仅仅指**合成图片的背景色**，如果源PDF文件背景与背景颜色不同，PDF文件背景会覆盖图片背景。你应该在食用该程序前将两者调成一致
